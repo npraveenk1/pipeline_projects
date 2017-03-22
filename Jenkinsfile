@@ -5,7 +5,8 @@ node {
       git 'https://github.com/npraveenk1/game-of-life.git'
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
-      // **       in the global configuration.           
+      // **       in the global configuration. 
+      // test 
       mvnHome = tool 'MVN339'
    }
    stage('Build') {
