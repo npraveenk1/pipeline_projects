@@ -6,7 +6,7 @@ node {
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration. 
-      // test line
+      // test 
       mvnHome = tool 'MVN339'
    }
    stage('Build') {
