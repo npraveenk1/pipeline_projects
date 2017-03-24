@@ -17,10 +17,10 @@ node {
       }
    }
    stage('Junit') {
-      junit 'gameoflife-core/target/surefire-reports/*.xml'
+      junit '**/target/surefire-reports/*.xml'
    }
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
-      archive 'target/*.jar'
+      archive 'gameoflife-core/target/*.jar,gameoflife-web/target/*.war'
    }
 }
