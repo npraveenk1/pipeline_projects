@@ -19,8 +19,11 @@ node {
    stage('Junit') {
       junit '**/target/surefire-reports/*.xml'
    }
-   stage('Results') {
+   stage('ArchiveArtifacts') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'gameoflife-core/target/*.jar,gameoflife-web/target/*.war'
+   }
+   stage('ArtifactoryUpload') {   // This step should not normally be used in your script. Consult the inline help for details.
+      artifactoryUpload(gameoflife-core/target/*.jar,gameoflife-web/target/*.war)
    }
 }
