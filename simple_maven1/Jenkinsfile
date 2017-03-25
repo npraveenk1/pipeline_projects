@@ -25,6 +25,6 @@ node {
    }
    stage('ArtifactoryUpload') {   
       // This step should not normally be used in your script. Consult the inline help for details.
-      artifactoryUpload 'gameoflife-core/target/*.jar,gameoflife-web/target/*.war'
+      artifactoryUpload 'gameoflife-web/target/*.war'
    }
 }
