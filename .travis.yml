@@ -44,3 +44,7 @@ matrix:
       script:
          - ls -la
          - echo Build completed
+branches:
+  only:
+  - master
+  
