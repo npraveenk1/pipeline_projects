@@ -23,9 +23,8 @@ matrix:
         directories:
           - node_modules
       env:
-        global:
-       #   - LANE=android 
-          - FILES_CHANGED=`git diff --name-only HEAD $(git merge-base HEAD $TRAVIS_BRANCH)`
+        - FILES_CHANGED=($(git diff --name-only $TRAVIS_COMMIT_RANGE))
+        #  - FILES_CHANGED=`git diff --name-only HEAD $(git merge-base HEAD $TRAVIS_BRANCH)`
           #- FILES_CHANGED=`git diff --name-only HEAD...$TRAVIS_BRANCH`
       #matrix:
       #    - TEST_SDK='iphonesimulator11.2' TEST_PLATFORM='iOS Simulator' TEST_OS=11.2 TEST_DEVICE_NAME='iPhone SE'
