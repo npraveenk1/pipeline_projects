@@ -12,7 +12,7 @@ matrix:
       node_js: false
       before_install:
         #- export FILES_CHANGED=$(git diff --name-only HEAD $(git merge-base HEAD $TRAVIS_BRANCH)) 
-        - export FILES_CHANGED=$(git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD android/sandbox)) 
+       # - export FILES_CHANGED=$(git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD android/sandbox)) 
         - echo $FILES_CHANGED 
         - nvm install 8
         - node --version
