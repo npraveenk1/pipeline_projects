@@ -13,7 +13,7 @@ matrix:
       before_install:
         #- export FILES_CHANGED=$(git diff --name-only HEAD $(git merge-base HEAD $TRAVIS_BRANCH)) 
        # - export FILES_CHANGED=$(git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD android/sandbox)) 
-        - echo $FILES_CHANGED 
+        - echo "${FILES_CHANGED}"
         - nvm install 8
         - node --version
         - gem install fastlane -NV
@@ -23,7 +23,7 @@ matrix:
         directories:
           - node_modules
       env:
-        - FILES_CHANGED=($(git diff --name-only $TRAVIS_COMMIT_RANGE))
+        - FILES_CHANGED="$(git diff --name-only $TRAVIS_COMMIT_RANGE)"
         #  - FILES_CHANGED=`git diff --name-only HEAD $(git merge-base HEAD $TRAVIS_BRANCH)`
           #- FILES_CHANGED=`git diff --name-only HEAD...$TRAVIS_BRANCH`
       #matrix:
@@ -33,9 +33,6 @@ matrix:
           - tools
           - platform-tools
           - build-tools-26.0.2
-          - android-23
-          - android-26
-          - android-19
           - extra-android-m2repository
           - extra-google-google_play_services
           - extra-google-m2repository
