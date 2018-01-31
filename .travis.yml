@@ -1,0 +1,46 @@
+language: node_js
+node_js: 8
+cache: yarn
+
+matrix:
+  include:
+  ## Android builds
+    - language: android
+      os: linux
+      group: deprecated-2017Q4
+      jdk: oraclejdk8
+      node_js: false
+      before_install:
+        #- export FILES_CHANGED=$(git diff --name-only HEAD $(git merge-base HEAD $TRAVIS_BRANCH)) 
+        - export FILES_CHANGED=$(git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD android/sandbox)) 
+        - echo $FILES_CHANGED 
+        - nvm install 8
+        - node --version
+        - gem install fastlane -NV
+        - travis_retry npm install -g yarn
+        - yarn -version
+      cache:
+        directories:
+          - node_modules
+     # env:
+      #  global:
+       #   - LANE=android 
+          #- FILES_CHANGED=`git diff --name-only HEAD $(git merge-base HEAD $TRAVIS_BRANCH)`
+          #- FILES_CHANGED=`git diff --name-only HEAD...$TRAVIS_BRANCH`
+      #matrix:
+      #    - TEST_SDK='iphonesimulator11.2' TEST_PLATFORM='iOS Simulator' TEST_OS=11.2 TEST_DEVICE_NAME='iPhone SE'
+      android:
+        components:
+          - tools
+          - platform-tools
+          - build-tools-26.0.2
+          - android-23
+          - android-26
+          - android-19
+          - extra-android-m2repository
+          - extra-google-google_play_services
+          - extra-google-m2repository
+          - addon-google_apis-google-16
+      script:
+         - ls -la
+         - echo Build completed
