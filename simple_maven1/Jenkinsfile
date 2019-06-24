@@ -23,4 +23,5 @@ node {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'gameoflife-core/target/*.jar,gameoflife-web/target/*.war'
    }
+   
 }
